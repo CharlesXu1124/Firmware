@@ -166,8 +166,8 @@ MulticopterAttitudeControl::generate_attitude_setpoint(float dt, bool reset_yaw_
 
 	Quatf q_sp_rpy = AxisAnglef(v(0), v(1), 0.f);
 	Eulerf euler_sp = q_sp_rpy;
-	attitude_setpoint.roll_body = euler_sp(0);
-	attitude_setpoint.pitch_body = euler_sp(1);
+	attitude_setpoint.roll_body = 0; // set to 0 since we do not want roll data
+	attitude_setpoint.pitch_body = 0; // set to 0 since we do not want pitch data
 	// The axis angle can change the yaw as well (noticeable at higher tilt angles).
 	// This is the formula by how much the yaw changes:
 	//   let a := tilt angle, b := atan(y/x) (direction of maximum tilt)
@@ -175,7 +175,7 @@ MulticopterAttitudeControl::generate_attitude_setpoint(float dt, bool reset_yaw_
 	attitude_setpoint.yaw_body = _man_yaw_sp + euler_sp(2);
 
 	/* modify roll/pitch only if we're a VTOL */
-	// can ignore this if block since quadcopter-X is not VTOL
+	// can ignore this if-block since quadcopter-X is not VTOL
 	if (_vehicle_status.is_vtol) {
 		// Construct attitude setpoint rotation matrix. Modify the setpoints for roll
 		// and pitch such that they reflect the user's intention even if a large yaw error
@@ -241,8 +241,8 @@ MulticopterAttitudeControl::publish_rates_setpoint()
 {
 	vehicle_rates_setpoint_s v_rates_sp{};
 
-	v_rates_sp.roll = _rates_sp(0);
-	v_rates_sp.pitch = _rates_sp(1);
+	v_rates_sp.roll = 0; // disable rate control for roll
+	v_rates_sp.pitch = 0; // disable rate control for pitch
 	v_rates_sp.yaw = _rates_sp(2);
 	v_rates_sp.thrust_body[0] = _v_att_sp.thrust_body[0];
 	v_rates_sp.thrust_body[1] = _v_att_sp.thrust_body[1];
