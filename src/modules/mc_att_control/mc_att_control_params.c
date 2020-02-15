@@ -51,8 +51,8 @@
  * @increment 0.1
  * @group Multicopter Attitude Control
  */
-PARAM_DEFINE_FLOAT(MC_ROLL_P, 6.5f);
-
+PARAM_DEFINE_FLOAT(MC_ROLL_P, 3.5f);
+// originally 6.5f, reduced to 3.5f since we want the steady state error
 /**
  * Pitch P gain
  *
@@ -65,8 +65,8 @@ PARAM_DEFINE_FLOAT(MC_ROLL_P, 6.5f);
  * @increment 0.1
  * @group Multicopter Attitude Control
  */
-PARAM_DEFINE_FLOAT(MC_PITCH_P, 6.5f);
-
+PARAM_DEFINE_FLOAT(MC_PITCH_P, 3.5f);
+// originally 6.5f, reduced to 3.5f since we want the steady state error
 /**
  * Yaw P gain
  *
