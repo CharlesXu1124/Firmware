@@ -51,7 +51,7 @@
  * @group Multicopter Rate Control
  */
 PARAM_DEFINE_FLOAT(MC_ROLLRATE_P, 0.15f);
-
+// so far leave unchanged
 /**
  * Roll rate I gain
  *
@@ -62,8 +62,8 @@ PARAM_DEFINE_FLOAT(MC_ROLLRATE_P, 0.15f);
  * @increment 0.01
  * @group Multicopter Rate Control
  */
-PARAM_DEFINE_FLOAT(MC_ROLLRATE_I, 0.2f);
-
+PARAM_DEFINE_FLOAT(MC_ROLLRATE_I, 0.0f);
+// originally 0.2f, set to 0 due to the fact that a steady state error is desirable
 /**
  * Roll rate integrator limit
  *
@@ -88,7 +88,7 @@ PARAM_DEFINE_FLOAT(MC_RR_INT_LIM, 0.30f);
  * @group Multicopter Rate Control
  */
 PARAM_DEFINE_FLOAT(MC_ROLLRATE_D, 0.003f);
-
+// leave unchanged to eliminate overshoot
 /**
  * Roll rate feedforward
  *
@@ -143,8 +143,8 @@ PARAM_DEFINE_FLOAT(MC_PITCHRATE_P, 0.15f);
  * @increment 0.01
  * @group Multicopter Rate Control
  */
-PARAM_DEFINE_FLOAT(MC_PITCHRATE_I, 0.2f);
-
+PARAM_DEFINE_FLOAT(MC_PITCHRATE_I, 0.0f);
+// originally 0.2f, set to 0 since a steady state error in pitch is desirable (OSV never pitches or the amount is negligible)
 /**
  * Pitch rate integrator limit
  *
@@ -168,7 +168,7 @@ PARAM_DEFINE_FLOAT(MC_PR_INT_LIM, 0.30f);
  * @group Multicopter Rate Control
  */
 PARAM_DEFINE_FLOAT(MC_PITCHRATE_D, 0.003f);
-
+// leave unchanged
 /**
  * Pitch rate feedforward
  *
